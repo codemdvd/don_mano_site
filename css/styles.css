@@ -1,0 +1,713 @@
+/* Сброс */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Шапка */
+.site-header {
+  background: #000;
+  padding: 1rem 1rem;
+  display: flex;
+  align-items: center;
+}
+.site-nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.site-nav a {
+  color: #d7b78d;
+  text-decoration: none;
+  font-weight: bold;
+  font-family: Georgia;
+  font-size: 23px;
+  line-height: 1.5;
+}
+.site-nav a:hover {
+  text-decoration: none;
+  color: #d17619;
+}
+/* Подсветка активного пункта навигации */
+.site-nav a.active {
+  text-decoration: underline;
+  color: #d17619;
+}
+
+/* Сетка карточек бутылок */
+.bottle-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.bottle-card {
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;    /* фиксированная ширина */
+  transition: none; /* отключаем все анимации */
+  text-decoration: none;
+  font-family: 'Courier New';
+}
+.bottle-card:hover {
+  transform: none; /* убираем сдвиг при hover */
+  text-decoration: none;
+  color: #d17619;
+}
+
+.bottle-card a.active {
+  text-decoration: underline;
+  color: #d17619;
+}
+
+/* Обёртка для картинок */
+.img-wrapper {
+  width: 100%;
+  height: 250px;       /* единая высота *//* фон за пустыми полями */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: none;    /* тень отключена */
+}
+
+.img-wrapper img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* показываем всю картинку */
+  border-radius: 8px;  /* по желанию */
+}
+
+/* Подпись под картинкой */
+.bottle-card span {
+  margin-top: 0.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+button {
+  background: none;
+  border: none;
+  padding: 0.5rem 1rem; /* чтобы не слетела верстка */
+  cursor: pointer;
+}
+
+
+/* Убираем outline при клике, если мешается */
+button:focus {
+  outline: none;
+}
+
+main {
+  position: relative;
+  /* Путь к вашему файлу — скорректируйте при необходимости */
+  background-image: url("../assets/background.png");
+  background-position: center top;
+  padding-top: 1rem;
+
+  /* Сделать минимум высоты main равным высоте экрана минус шапка (если шапка ~4rem) */
+  min-height: calc(100vh - 4rem);
+}
+
+
+/* Псевдо-элемент с Gonzales-изображением */
+main.home::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-image: url("../assets/gonzales.png");
+  background-repeat: no-repeat;
+  background-position: center 70%;
+  /* вот это даёт полный охват + кроп */
+  background-size: cover;
+  z-index: 1;
+}
+
+main.home::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 20%; /* высота затемнения */
+  background: linear-gradient(to top, rgba(0, 0, 0, 1), transparent);
+  z-index: 1; /* ниже текста, выше фонового изображения */
+  pointer-events: none;
+}
+
+
+
+main.home h1 {
+  position: absolute;
+  bottom: 5%;
+  left: 0;
+  width: 100%;
+
+  background: rgba(255, 255, 255, 0.8);
+  /* вертикальные отступы оставляем прежними, 
+     а по горизонтали добавляем отступ слева */
+  padding: 1.5rem 0;
+  padding-left: 2rem; /* здесь регулируйте величину отступа */
+
+  font-size: 24px;
+
+  color: #000;
+  text-align: left;  /* текст теперь прижат к левому краю с отступом */
+
+  z-index: 2;
+}
+
+.h1-inner {
+  display: inline-block;
+  padding-left: 7rem;   /* сдвиг текста внутрь фона */
+  transform: translateX(-10px); /* дополнительный сдвиг текста влево */
+}
+
+.solera-image {
+  position: absolute;
+  top: 0;
+  right: -5%;
+  padding-bottom: 9.5%;          /* уходит за правый край */
+  height: 1100px;       /* тянется на всю высоту окна */
+  width: auto;         /* сохраняет пропорции */
+  z-index: 9999;       /* самое большое, чтобы быть поверх всего */
+  pointer-events: none;/* не мешает кликам */
+}
+
+.tagline {
+  position: absolute;
+  bottom: 10%;
+  left: 0;
+  width: 100%;
+  padding: 2rem;
+  background: rgba(255,255,255,0.8);
+  box-sizing: border-box;
+  z-index: 3;
+}
+.tagline h1 {
+  margin: 0;
+  color: #000;
+}
+
+/* Футер */
+.site-footer {
+  background: #000;
+  text-align: center;
+  height: 320px; /* Заменили pt на px */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 8px; /* чуть меньше расстояние сверху */
+  position: relative;
+}
+.site-footer a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+.site-footer a:hover {
+  text-decoration: underline;
+}
+
+.info-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.about-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.preparation-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-bottom: 60px;
+  text-align: left;
+}
+
+.preparation-container p {
+  width: 1050px;
+  margin: 30px 12px 0 0;
+  font-size: 16pt;
+  line-height: 1;
+  font-family: 'Courier New';
+}
+
+
+.about-container p {
+  width: 520px;
+  margin: 0 12px;
+  font-size: 16pt;
+  line-height: 1;
+  font-family: 'Courier New';
+}
+
+.about-container img {
+  width: 230pt; /* или другой размер, например 32px */
+  height: 340pt;
+  margin: 0 4px;
+}
+
+.social-column {
+  margin-right: 170px; /* сдвиг влево */
+}
+
+.text-columns {
+  display: flex;
+  gap: 1rem;
+}
+
+
+.text-columns p strong {
+  font-weight: bold;
+}
+
+.info-container p {
+  color: #d7b78d;
+  width: 180px;
+  margin: 0 12px;
+  font-size: 9pt;
+  line-height: 1.5;
+  font-family: 'Courier New';
+}
+
+.info-container p strong {
+  font-weight: bold;
+}
+
+.info-container p + p {
+  margin-left: 24px;
+}
+
+.info-container img {
+  width: 24px; /* или другой размер, например 32px */
+  height: auto;
+  margin: 0 4px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  width: 112px;
+  margin-bottom: 10px;
+}
+
+.social-icons img {
+  width: 24px;
+  height: 24px;
+}
+
+.contactus {
+  color: #d7b78d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 53px;
+  font-family: Georgia, serif; /* заменено */
+  font-weight: normal;
+  letter-spacing: 3px;
+  line-height: 1.1;
+  width: 100%;
+  height: auto;
+  margin-bottom: 45px; /* меньше расстояние после CONTACT US */
+  text-align: center;
+}
+
+.about {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 53px;
+  font-family: Georgia, serif; /* заменено */
+  font-weight: normal;
+  letter-spacing: 3px;
+  margin-bottom: 45px; /* меньше расстояние после CONTACT US */
+  margin-top: 30pt;
+  text-align: center;
+}
+
+.about p {
+  text-align: center;
+  font-family: Georgia, serif;
+  font-size: 48px;
+  line-height: 1.2;
+  margin-bottom: 2rem;
+}
+
+.rectangle {
+  height: auto;
+  width: 75px;
+  object-fit: contain;
+  margin-top: 25px; /* больше отступ сверху */
+}
+
+.golova-image {
+  position: absolute;
+  bottom: 20%;
+  z-index: 6;
+  height:250px;
+  width:250px;
+  left:400px;
+  top:50px;
+}
+
+.dm_logo {
+  position: absolute;
+  bottom: 20%;
+  z-index: 7;
+  height:180px;
+  width:580px;
+  left:270px;
+  top:220px;
+}
+
+.assortment-logo {
+  display: flex;
+  justify-content: center;
+}
+
+.logo-pair-wrapper {
+  position: relative;
+  width: 630px; /* ширина по большему изображению */
+  height: 480px;
+  flex-shrink: 0;
+}
+
+.logo-pair {
+  position: relative;
+  width: 630px;   /* по самой широкой */
+  height: 350px;  /* по самой высокой */
+}
+
+
+.golova-image-assort {
+  position: absolute;
+  bottom: 20%;
+  z-index: 6;
+  height:250px;
+  width:250px;
+  top: 0;
+  left: 180px;
+}
+
+.dm-logo-white {
+  position: absolute;
+  z-index: 7;
+  height:480px;
+  width:630px;
+  top: 5px;
+  left: 0;
+}
+
+.logo-page1 {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+/* Страница 2 */
+.logo-page2 {
+  position: absolute;
+  top: 200px;
+  right: 60px;
+}
+
+.steps {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.steps-images {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* <-- центрирует обе картинки */
+  gap: 1rem;
+}
+
+.step-icon {
+  width: 200px;  /* больше */
+  height: auto;
+}
+
+.step-arrow {
+  width: 20px;  /* меньше */
+  height: 150px;
+}
+
+.step-arrow-short {
+  width: 20px;  /* меньше */
+  height: 100px;
+}
+
+.steps-text {
+  width: 1050px;
+  margin: 0 12px 0 100px;
+  font-size: 16pt;
+  line-height: 1;
+  font-family: 'Courier New';
+}
+
+.steps-text h1 {
+  font-size: 27pt;
+  margin-bottom: 1rem;
+  font-family: 'Georgia';
+}
+
+.bottle-info-block {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  position: relative;
+  align-items: flex-start;
+}
+
+.gen-bottle-info {
+  display: flex;
+  gap: 2rem;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.column {
+  width: 260px;
+  font-size: 18px;
+  line-height: 1.4;
+  font-family: 'Courier New';
+}
+
+.column p {
+  margin-bottom: 1rem;
+}
+
+.divider-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  border-left: 2px dashed black;
+  transform: translateX(-50%);
+}
+
+.logo-wrapper {
+  align-self: center;
+}
+
+.logo-wrapper.logo-page2 {
+  display: flex;
+  align-items: center; /* Центр по высоте колонок */
+  flex-shrink: 0;
+}
+
+.info-page {
+  font-family: 'Courier New';
+}
+
+.info-layout {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+  position: relative;
+}
+
+.bottle-image {
+  height: auto;
+  max-height: 1100px;
+  width: auto;
+  flex-shrink: 0;
+  margin-right: 30px;
+}
+
+.right-content {
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.description-text {
+  flex: 1;
+  font-family: 'Courier New';
+  font-size: 16px;
+  line-height: 1.6;
+  color: #000;
+  max-width: 800px;
+}
+
+.description-text h1 {
+  font-size: 24px;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-family: Georgia, serif;
+}
+
+.bottom-banner {
+  width: 100%;
+  display: block;
+  margin-top: 4rem;
+}
+
+.info-columns-section {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4rem;
+  margin-bottom: 4rem;
+  flex-wrap: wrap;
+}
+
+.visual-section {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 3rem;
+  flex-wrap: nowrap; /* ❗ важно — не переносить элементы на новую строку */
+  padding: 2rem;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.download-button {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.75rem 2rem;
+  background-color: #d7b78d;
+  color: black;
+  font-family: 'Courier New';
+  font-size: 16px;
+  text-decoration: none;
+  border-radius: 6px;
+  border: 2px solid black;
+  transition: background-color 0.3s ease;
+}
+
+.download-button:hover {
+  background-color: #d17619;
+  color: white;
+}
+
+.bottle-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  color: #d7b78d;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* сдвигаем контент вверх */
+  padding-top: 80px;
+  z-index: 9999;
+}
+
+.modal-content {
+  text-align: center;
+  max-width: 90%;
+}
+
+.modal-logo {
+  height: 220px;
+  width: 550px;
+  margin-bottom: 1rem;
+}
+
+.modal-tagline {
+  font-family: Georgia, serif;
+  font-size: 32px;
+  font-weight: bold; /* сделает жирной */
+  margin-bottom: 2rem;
+  color: #d7b78d;
+}
+
+.modal-question {
+  font-size: 40px;
+  font-weight: bold;
+  line-height: 1.3;
+  margin-bottom: 2rem;
+  font-family: Georgia, serif;
+  color: #d7b78d;
+  white-space: pre-line; /* для переноса строк */
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.modal-btn {
+  background: none;
+  border: 2px solid #d7b78d;
+  color: #d7b78d;
+  padding: 1rem 3rem; /* увеличен размер */
+  font-family: 'Courier New', monospace;
+  font-size: 20px; /* крупнее шрифт */
+  cursor: pointer;
+  font-weight: bold;
+}
+.modal-btn:hover {
+  background-color: rgba(215, 183, 141, 0.1);
+}
+
+.modal-terms {
+  font-size: 14px;
+  font-family: 'Courier New', monospace;
+  color: #d7b78d;
+  text-align: center;
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+}
+
+.back-button {
+  position: absolute;
+  top: 5rem;
+  left: 8rem;
+  background-color: #d7b78d;
+  color: black;
+  font-family: 'Courier New';
+  font-size: 16px;
+  text-decoration: none;
+  border-radius: 6px;
+  border: 2px solid black;
+  padding: 0.75rem 2rem;
+  transition: background-color 0.3s ease;
+  z-index: 10000;
+}
+
+.back-button:hover {
+  background-color: #d17619;
+  color: white;
+}
