@@ -53,16 +53,16 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 200px;    /* фиксированная ширина */
-  transition: none; /* отключаем все анимации */
+  width: 260px;    /* фиксированная ширина */
+  transition: transform 0.3s ease; /* отключаем все анимации */
   text-decoration: none;
   font-family: 'Courier New';
 }
 .bottle-card:hover {
-  transform: none; /* убираем сдвиг при hover */
-  text-decoration: none;
+  transform: scale(1.05);
   color: #d17619;
 }
+
 
 .bottle-card a.active {
   text-decoration: underline;
@@ -77,8 +77,8 @@ html, body {
   align-items: center;
   justify-content: center;
   border-radius: 8px;
-  overflow: hidden;
-  box-shadow: none;    /* тень отключена */
+  overflow: visible;
+  position: relative;    /* тень отключена */
 }
 
 .img-wrapper img {
@@ -86,13 +86,21 @@ html, body {
   max-height: 100%;
   object-fit: contain; /* показываем всю картинку */
   border-radius: 8px;  /* по желанию */
+  transition: transform 0.3s ease;
+  z-index: 1;
+  will-change: transform;
 }
 
 /* Подпись под картинкой */
 .bottle-card span {
-  margin-top: 0.5rem;
-  font-weight: bold;
+  margin-top: 1rem;
   text-align: center;
+  font-family: 'Courier New';
+  font-size: 16pt;
+}
+
+.bottle-card:hover .img-wrapper img {
+  transform: scale(1.05);
 }
 
 button {
@@ -111,8 +119,10 @@ button:focus {
 main {
   position: relative;
   /* Путь к вашему файлу — скорректируйте при необходимости */
-  background-image: url("../assets/background.png");
-  background-position: center top;
+  background-image: url("../assets/background-test.png");
+  background-position: top left;
+  background-repeat: repeat-y;
+  background-size: 100%;
   padding-top: 1rem;
 
   /* Сделать минимум высоты main равным высоте экрана минус шапка (если шапка ~4rem) */
@@ -246,25 +256,25 @@ main.home h1 {
 }
 
 .preparation-container p {
-  width: 1050px;
+  width: 1400px;
   margin: 30px 12px 0 0;
   font-size: 16pt;
-  line-height: 1;
+  line-height: 1.4;
   font-family: 'Courier New';
 }
 
 
 .about-container p {
-  width: 520px;
+  width: 550px;
   margin: 0 12px;
   font-size: 16pt;
-  line-height: 1;
+  line-height: 1.4;
   font-family: 'Courier New';
 }
 
 .about-container img {
-  width: 230pt; /* или другой размер, например 32px */
-  height: 340pt;
+  width: 330pt; /* или другой размер, например 32px */
+  height: 440pt;
   margin: 0 4px;
 }
 
@@ -390,14 +400,14 @@ main.home h1 {
 .logo-pair-wrapper {
   position: relative;
   width: 630px; /* ширина по большему изображению */
-  height: 480px;
+  height: 300px;
   flex-shrink: 0;
 }
 
 .logo-pair {
   position: relative;
   width: 630px;   /* по самой широкой */
-  height: 350px;  /* по самой высокой */
+  height: 100%;  /* по самой высокой */
 }
 
 
@@ -405,18 +415,18 @@ main.home h1 {
   position: absolute;
   bottom: 20%;
   z-index: 6;
-  height:250px;
-  width:250px;
-  top: 0;
-  left: 180px;
+  height:200px;
+  width:200px;
+  top: 20px;
+  left: 185px;
 }
 
 .dm-logo-white {
   position: absolute;
   z-index: 7;
-  height:480px;
-  width:630px;
-  top: 5px;
+  height:430px;
+  width:580px;
+  top: 0px;
   left: 0;
 }
 
@@ -424,6 +434,7 @@ main.home h1 {
   display: flex;
   justify-content: center;
   margin-top: 30px;
+  margin-left: 55px;
 }
 
 /* Страница 2 */
@@ -468,7 +479,7 @@ main.home h1 {
   width: 1050px;
   margin: 0 12px 0 100px;
   font-size: 16pt;
-  line-height: 1;
+  line-height: 1.4;
   font-family: 'Courier New';
 }
 
@@ -476,6 +487,7 @@ main.home h1 {
   font-size: 27pt;
   margin-bottom: 1rem;
   font-family: 'Georgia';
+  font-weight: lighter;
 }
 
 .bottle-info-block {
@@ -494,8 +506,8 @@ main.home h1 {
 }
 
 .column {
-  width: 260px;
-  font-size: 18px;
+  width: 380px;
+  font-size: 20px;
   line-height: 1.4;
   font-family: 'Courier New';
 }
@@ -522,6 +534,7 @@ main.home h1 {
   display: flex;
   align-items: center; /* Центр по высоте колонок */
   flex-shrink: 0;
+  margin-right: 60px;
 }
 
 .info-page {
@@ -541,7 +554,6 @@ main.home h1 {
   max-height: 1100px;
   width: auto;
   flex-shrink: 0;
-  margin-right: 30px;
 }
 
 .right-content {
@@ -554,16 +566,16 @@ main.home h1 {
 .description-text {
   flex: 1;
   font-family: 'Courier New';
-  font-size: 16px;
+  font-size: 17px;
   line-height: 1.6;
   color: #000;
-  max-width: 800px;
+  max-width: 900px;
 }
 
 .description-text h1 {
-  font-size: 24px;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
+  font-size: 21px;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
   font-family: Georgia, serif;
 }
 
@@ -575,10 +587,10 @@ main.home h1 {
 
 .info-columns-section {
   display: flex;
-  justify-content: center;
   align-items: flex-start;
   gap: 4rem;
   margin-bottom: 4rem;
+  margin-left: 14.5%;
   flex-wrap: wrap;
 }
 
@@ -593,29 +605,11 @@ main.home h1 {
   margin: 0 auto;
 }
 
-.download-button {
-  display: inline-block;
-  margin-top: 1.5rem;
-  padding: 0.75rem 2rem;
-  background-color: #d7b78d;
-  color: black;
-  font-family: 'Courier New';
-  font-size: 16px;
-  text-decoration: none;
-  border-radius: 6px;
-  border: 2px solid black;
-  transition: background-color 0.3s ease;
-}
-
-.download-button:hover {
-  background-color: #d17619;
-  color: white;
-}
-
 .bottle-column {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-right: 100px;
 }
 
 .modal {
@@ -695,9 +689,8 @@ main.home h1 {
   position: absolute;
   top: 5rem;
   left: 8rem;
-  background-color: #d7b78d;
   color: black;
-  font-family: 'Courier New';
+  font-family: 'Courier New', monospace;
   font-size: 16px;
   text-decoration: none;
   border-radius: 6px;
@@ -705,9 +698,33 @@ main.home h1 {
   padding: 0.75rem 2rem;
   transition: background-color 0.3s ease;
   z-index: 10000;
+  font-weight: bold;
 }
 
 .back-button:hover {
   background-color: #d17619;
   color: white;
+}
+
+.download-button {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.75rem 2rem;
+  color: black;
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+  text-decoration: none;
+  border-radius: 6px;
+  border: 2px solid black;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+}
+
+.download-button:hover {
+  background-color: #d17619;
+  color: white;
+}
+
+.shared-container {
+  margin: 0 auto;
 }
