@@ -1,4 +1,3 @@
-/* Сброс */
 * {
   margin: 0;
   padding: 0;
@@ -9,7 +8,6 @@ html, body {
   overflow-x: hidden;
 }
 
-/* Шапка */
 .site-header {
   background: #000;
   padding: 1rem 1rem;
@@ -34,13 +32,12 @@ html, body {
   text-decoration: none;
   color: #d17619;
 }
-/* Подсветка активного пункта навигации */
 .site-nav a.active {
   text-decoration: underline;
   color: #d17619;
 }
 
-/* Сетка карточек бутылок */
+
 .bottle-grid {
   display: flex;
   flex-wrap: wrap;
@@ -53,8 +50,8 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 260px;    /* фиксированная ширина */
-  transition: transform 0.3s ease; /* отключаем все анимации */
+  width: 260px;
+  transition: transform 0.3s ease;
   text-decoration: none;
   font-family: 'Courier New';
 }
@@ -69,29 +66,27 @@ html, body {
   color: #d17619;
 }
 
-/* Обёртка для картинок */
 .img-wrapper {
   width: 100%;
-  height: 250px;       /* единая высота *//* фон за пустыми полями */
+  height: 250px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 8px;
   overflow: visible;
-  position: relative;    /* тень отключена */
+  position: relative;
 }
 
 .img-wrapper img {
   max-width: 100%;
   max-height: 100%;
-  object-fit: contain; /* показываем всю картинку */
-  border-radius: 8px;  /* по желанию */
+  object-fit: contain;
+  border-radius: 8px;
   transition: transform 0.3s ease;
   z-index: 1;
   will-change: transform;
 }
 
-/* Подпись под картинкой */
 .bottle-card span {
   margin-top: 1rem;
   text-align: center;
@@ -106,31 +101,26 @@ html, body {
 button {
   background: none;
   border: none;
-  padding: 0.5rem 1rem; /* чтобы не слетела верстка */
+  padding: 0.5rem 1rem;
   cursor: pointer;
 }
 
 
-/* Убираем outline при клике, если мешается */
 button:focus {
   outline: none;
 }
 
 main {
   position: relative;
-  /* Путь к вашему файлу — скорректируйте при необходимости */
   background-image: url("../assets/background-test.png");
   background-position: top left;
   background-repeat: repeat-y;
   background-size: 100%;
   padding-top: 1rem;
-
-  /* Сделать минимум высоты main равным высоте экрана минус шапка (если шапка ~4rem) */
   min-height: calc(100vh - 4rem);
 }
 
 
-/* Псевдо-элемент с Gonzales-изображением */
 main.home::before {
   content: "";
   position: absolute;
@@ -139,7 +129,6 @@ main.home::before {
   background-image: url("../assets/gonzales.png");
   background-repeat: no-repeat;
   background-position: center 70%;
-  /* вот это даёт полный охват + кроп */
   background-size: cover;
   z-index: 1;
 }
@@ -150,9 +139,9 @@ main.home::after {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 20%; /* высота затемнения */
+  height: 20%;
   background: linear-gradient(to top, rgba(0, 0, 0, 1), transparent);
-  z-index: 1; /* ниже текста, выше фонового изображения */
+  z-index: 1;
   pointer-events: none;
 }
 
@@ -165,34 +154,32 @@ main.home h1 {
   width: 100%;
 
   background: rgba(255, 255, 255, 0.8);
-  /* вертикальные отступы оставляем прежними, 
-     а по горизонтали добавляем отступ слева */
   padding: 1.5rem 0;
-  padding-left: 2rem; /* здесь регулируйте величину отступа */
+  padding-left: 2rem;
 
   font-size: 24px;
 
   color: #000;
-  text-align: left;  /* текст теперь прижат к левому краю с отступом */
+  text-align: left;
 
   z-index: 2;
 }
 
 .h1-inner {
   display: inline-block;
-  padding-left: 7rem;   /* сдвиг текста внутрь фона */
-  transform: translateX(-10px); /* дополнительный сдвиг текста влево */
+  padding-left: 7rem;
+  transform: translateX(-10px);
 }
 
 .solera-image {
   position: absolute;
   top: 0;
   right: -5%;
-  padding-bottom: 9.5%;          /* уходит за правый край */
-  height: 1100px;       /* тянется на всю высоту окна */
-  width: auto;         /* сохраняет пропорции */
-  z-index: 9999;       /* самое большое, чтобы быть поверх всего */
-  pointer-events: none;/* не мешает кликам */
+  padding-bottom: 9.5%;
+  height: 1100px;
+  width: auto;
+  z-index: 9999;
+  pointer-events: none;
 }
 
 .tagline {
@@ -210,16 +197,15 @@ main.home h1 {
   color: #000;
 }
 
-/* Футер */
 .site-footer {
   background: #000;
   text-align: center;
-  height: 320px; /* Заменили pt на px */
+  height: 320px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding-top: 8px; /* чуть меньше расстояние сверху */
+  padding-top: 8px;
   position: relative;
 }
 .site-footer a {
@@ -273,13 +259,13 @@ main.home h1 {
 }
 
 .about-container img {
-  width: 330pt; /* или другой размер, например 32px */
+  width: 330pt;
   height: 440pt;
   margin: 0 4px;
 }
 
 .social-column {
-  margin-right: 170px; /* сдвиг влево */
+  margin-right: 170px;
 }
 
 .text-columns {
@@ -310,7 +296,7 @@ main.home h1 {
 }
 
 .info-container img {
-  width: 24px; /* или другой размер, например 32px */
+  width: 24px;
   height: auto;
   margin: 0 4px;
 }
@@ -334,13 +320,13 @@ main.home h1 {
   justify-content: center;
   align-items: center;
   font-size: 53px;
-  font-family: Georgia, serif; /* заменено */
+  font-family: Georgia, serif;
   font-weight: normal;
   letter-spacing: 3px;
   line-height: 1.1;
   width: 100%;
   height: auto;
-  margin-bottom: 45px; /* меньше расстояние после CONTACT US */
+  margin-bottom: 45px;
   text-align: center;
 }
 
@@ -349,10 +335,10 @@ main.home h1 {
   justify-content: center;
   align-items: center;
   font-size: 53px;
-  font-family: Georgia, serif; /* заменено */
+  font-family: Georgia, serif;
   font-weight: normal;
   letter-spacing: 3px;
-  margin-bottom: 45px; /* меньше расстояние после CONTACT US */
+  margin-bottom: 45px;
   margin-top: 30pt;
   text-align: center;
 }
@@ -369,7 +355,7 @@ main.home h1 {
   height: auto;
   width: 75px;
   object-fit: contain;
-  margin-top: 25px; /* больше отступ сверху */
+  margin-top: 25px;
 }
 
 .golova-image {
@@ -399,15 +385,15 @@ main.home h1 {
 
 .logo-pair-wrapper {
   position: relative;
-  width: 630px; /* ширина по большему изображению */
+  width: 630px;
   height: 300px;
   flex-shrink: 0;
 }
 
 .logo-pair {
   position: relative;
-  width: 630px;   /* по самой широкой */
-  height: 100%;  /* по самой высокой */
+  width: 630px;
+  height: 100%;
 }
 
 
@@ -437,7 +423,6 @@ main.home h1 {
   margin-left: 55px;
 }
 
-/* Страница 2 */
 .logo-page2 {
   position: absolute;
   top: 200px;
@@ -456,22 +441,22 @@ main.home h1 {
 .steps-images {
   display: flex;
   flex-direction: column;
-  align-items: center; /* <-- центрирует обе картинки */
+  align-items: center;
   gap: 1rem;
 }
 
 .step-icon {
-  width: 200px;  /* больше */
+  width: 200px;
   height: auto;
 }
 
 .step-arrow {
-  width: 20px;  /* меньше */
+  width: 20px;
   height: 150px;
 }
 
 .step-arrow-short {
-  width: 20px;  /* меньше */
+  width: 20px;
   height: 100px;
 }
 
@@ -532,7 +517,7 @@ main.home h1 {
 
 .logo-wrapper.logo-page2 {
   display: flex;
-  align-items: center; /* Центр по высоте колонок */
+  align-items: center;
   flex-shrink: 0;
   margin-right: 60px;
 }
@@ -599,7 +584,7 @@ main.home h1 {
   justify-content: center;
   align-items: flex-start;
   gap: 3rem;
-  flex-wrap: nowrap; /* ❗ важно — не переносить элементы на новую строку */
+  flex-wrap: nowrap;
   padding: 2rem;
   max-width: 1600px;
   margin: 0 auto;
@@ -617,12 +602,17 @@ main.home h1 {
   inset: 0;
   background: #000;
   color: #d7b78d;
-  display: flex;
+  /* display: flex; */
+  display: none;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* сдвигаем контент вверх */
+  justify-content: flex-start;
   padding-top: 80px;
   z-index: 9999;
+}
+
+.modal.active {
+  display: flex;
 }
 
 .modal-content {
@@ -639,7 +629,7 @@ main.home h1 {
 .modal-tagline {
   font-family: Georgia, serif;
   font-size: 32px;
-  font-weight: bold; /* сделает жирной */
+  font-weight: bold;
   margin-bottom: 2rem;
   color: #d7b78d;
 }
@@ -651,7 +641,7 @@ main.home h1 {
   margin-bottom: 2rem;
   font-family: Georgia, serif;
   color: #d7b78d;
-  white-space: pre-line; /* для переноса строк */
+  white-space: pre-line;
 }
 
 .modal-buttons {
@@ -664,9 +654,9 @@ main.home h1 {
   background: none;
   border: 2px solid #d7b78d;
   color: #d7b78d;
-  padding: 1rem 3rem; /* увеличен размер */
+  padding: 1rem 3rem;
   font-family: 'Courier New', monospace;
-  font-size: 20px; /* крупнее шрифт */
+  font-size: 20px;
   cursor: pointer;
   font-weight: bold;
 }

@@ -1,21 +1,19 @@
-document.addEventListener("DOMContentLoaded", function () {
+// js/main.js
+document.addEventListener("DOMContentLoaded", () => {
   const modal = document.getElementById("ageModal");
-  const yesBtn = document.querySelector(".yes");
-  const noBtn = document.querySelector(".no");
+  const yesBtn = modal.querySelector(".yes");
+  const noBtn = modal.querySelector(".no");
 
-  // Проверка: уже подтвержден возраст?
   if (!localStorage.getItem("ageVerified")) {
-    modal.style.display = "flex";
+    modal.classList.add("active");
   }
 
-  // Если подтвердили возраст
   yesBtn.addEventListener("click", () => {
     localStorage.setItem("ageVerified", "true");
-    modal.style.display = "none";
+    modal.classList.remove("active");
   });
 
-  // Если нет — перенаправление
   noBtn.addEventListener("click", () => {
-    window.location.href = "https://www.google.com/"; // можно заменить на свою ссылку
+    window.location.href = "https://www.google.com/";
   });
 });
