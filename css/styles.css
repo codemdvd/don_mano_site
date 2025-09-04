@@ -26,7 +26,7 @@ html, body {
   text-decoration: none;
   font-weight: bold;
   font-family: Georgia, serif;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   padding: 0.3em 0.6em;
   line-height: 1.5;
 }
@@ -122,6 +122,7 @@ main {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 70%;
   z-index: 1;
 }
 
@@ -213,57 +214,48 @@ main.home h1 {
   align-items: start;
 }
 
-.about-container {
+.about-container{
   display: grid;
-  grid-template-columns: minmax(160px, 1fr) minmax(0, 2fr) minmax(160px, 1fr);
-  align-items: start;
-  column-gap: clamp(2rem, 6vw, 5rem);
-  max-width: min(1400px, 95vw);
-  margin: 0 auto clamp(2rem, 4vmin, 3rem);
-  padding: 0 2vw;
+  grid-template-columns: clamp(260px, 20vw, 400px) minmax(60ch, 1fr) clamp(260px, 20vw, 400px);
+  column-gap: clamp(1rem, 3vw, 2rem);
+  align-items: center;
+  justify-items: center;
+  max-width: min(1600px, 95vw);
+  margin: 0 auto;
+  padding: 0 8vw;
+  padding-bottom: 2vw;
 }
 
-.about-container > img {
+.about-container > img{
   width: 100%;
-  max-width: 1560px;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  display: block;
   height: auto;
-  justify-self: center;
 }
 
-.about-container > p {
+.about-container > p{
   margin: 0;
-  font-family: "Courier New", monospace;
-  font-size: clamp(1rem, 0.6vw + .95rem, 1.2rem);
+  max-width: 60ch;
+  width: min(60ch, 100%);
+  justify-self: center;
+  text-align: left;
   line-height: 1.7;
+  font: 400 clamp(0.95rem, 1vmin + 0.45rem, 1.0625rem)/1.7 "Courier New", monospace;
 }
 
 
 .preparation-container{
-  display:flex;justify-content:center;
+  display:flex;
+  justify-content:center;
   padding: 0 2vw clamp(2rem, 4vmin, 3rem);
   text-align:left;
 }
 .preparation-container p{
-  max-width: min(128ch, 92vw);
+  max-width: min(138ch, 92vw);
   margin: 0;
-  font-family: "Courier New", monospace;
-  font-size: clamp(1rem, 0.6vw + .95rem, 1.2rem);
+  font: 400 clamp(0.95rem, 1vmin + 0.45rem, 1.0625rem)/1.7 "Courier New", monospace;
   line-height: 1.75;
-}
-
-
-.about-container p {
-  width: 550px;
-  margin: 0 12px;
-  font-size: 16pt;
-  line-height: 1.4;
-  font-family: 'Courier New';
-}
-
-.about-container img {
-  width: 330pt;
-  height: 440pt;
-  margin: 0 4px;
 }
 
 .social-column { justify-self: center; }
@@ -366,7 +358,7 @@ main.home h1 {
   display: grid;
   place-items: center;
   width: fit-content;
-  left: 19.5vw;
+  left: 19vw;
   top: 8vh;
 }
 
@@ -375,7 +367,7 @@ main.home h1 {
   top: 3%;
   right: -5%;
   padding-bottom: 9.5%;
-  height: 110vh;
+  height: 115vh;
   width: auto;
   z-index: 9999;
   pointer-events: none;
@@ -392,13 +384,13 @@ main.home h1 {
 
 .golova-image {
   z-index: 6;
-  width:35vmin;
-  transform: translate(-4vmin, -6vmin);
+  width:27vmin;
+  transform: translate(-3vmin, -4vmin);
 }
 
 .dm_logo {
-  width: 70vmin;
-  transform: translateY(13vmin);
+  width: 58vmin;
+  transform: translateY(12vmin);
   z-index: 7;
 
 }
@@ -408,12 +400,14 @@ main.home h1 {
   justify-content: center;
 }
 
-.logo-pair-wrapper {
-  position: relative;
-  width: 630px;
-  height: 300px;
-  flex-shrink: 0;
+
+
+.logo-wrapper { 
+  display:flex; 
+  justify-content:center; 
+  margin: clamp(2vh, 4vmin, 4vh) auto 0; 
 }
+
 
 .logo-pair{
   position: relative;
@@ -424,29 +418,36 @@ main.home h1 {
 
 .golova-image-assort {
   position: absolute;
-  bottom: 20%;
   object-fit: contain;
   z-index: 6;
-  width:30%;
-  top: 15%;
+  width: 30%;
+  top: 13%;
   left: 35%;
 }
 
 .dm-logo-white {
   position: absolute;
+  top: 60%;
+  left: 51.5%;
+  width: 100%;
+  height: auto;
   object-fit: contain;
   z-index: 7;
-  height:auto;
-  width:100%;
-  top: 0;
-  left: 0;
+
+  transform: translate(-50%, -50%) scale(1.6);
+  transform-origin: center center;
 }
+
 
 .logo-page1 {
   display: flex;
   justify-content: center;
-  margin-left: 55px;
+  align-items: center;
+  margin: 0 auto;
+  width: 100%;
 }
+
+.logo-wrapper.logo-page2 { align-items:center; margin-right: 0; }
 
 .logo-page2 {
   position: absolute;
@@ -461,7 +462,7 @@ main.home h1 {
   column-gap: clamp(1rem, 3vw, 2rem);
   max-width: min(1600px, 92vw);
   margin: 0 auto clamp(1.5rem, 3vmin, 2rem);
-  padding: 0 2vw;
+  padding: 0 7vw;
 }
 
 .steps-images{
@@ -486,15 +487,14 @@ main.home h1 {
 
 .steps-text {
   max-width: 110ch;
-  font-family: "Courier New", monospace;
-  font-size: clamp(1rem, 0.6vw + .95rem, 1.25rem);
+  font: 400 clamp(0.95rem, 1vmin + 0.45rem, 1.0625rem)/1.7 "Courier New", monospace;
   line-height: 1.75;
 }
 
 .steps-text h1 {
   font-family: Georgia, serif;
   font-weight: 400;
-  font-size: clamp(1.3rem, 1vw + 1.2rem, 2rem);
+  font-size: clamp(1rem, 1vw + 0.9rem, 1.7rem);
   margin: 0 0 1rem;
 }
 
@@ -513,8 +513,7 @@ main.home h1 {
 }
 
 .column{
-  font-family: "Courier New", monospace;
-  font-size: clamp(1.02rem, 0.55vw + 0.95rem, 1.28rem);
+  font: 400 clamp(0.95rem, 1vmin + 0.45rem, 1.0625rem)/1.7 "Courier New", monospace;
   line-height: 1.6;
   overflow-wrap: anywhere;
   word-break: normal;
@@ -528,9 +527,6 @@ main.home h1 {
   border-left: 2px dashed #000;
   padding-left: clamp(1rem, 3vmin, 2rem);
 }
-.logo-wrapper { display:flex; justify-content:center; margin: clamp(2vh, 4vmin, 4vh) auto 0; }
-
-.logo-wrapper.logo-page2 { align-items:center; margin-right: 0; }
 
 .info-page {
   font-family: 'Courier New';
@@ -568,7 +564,7 @@ main.home h1 {
 .description-text h1 {
   font-family: Georgia, serif;
   font-weight: 600;
-  font-size: clamp(1.05rem, 1.2vmin + 0.8rem, 1.4rem);
+  font-size: clamp(1rem, 1vw + 0.9rem, 1.7rem);
   margin: 1rem 0 .5rem;
 }
 
@@ -687,7 +683,7 @@ main.home h1 {
 .back-button {
   position: absolute;
   top: clamp(5rem, 3vh, 2rem);
-  left: clamp(15rem, 3vw, 2.5rem);
+  left: clamp(14.5rem, 16.5vw, 30.5rem);
   color: black;
   font: 700 1rem/1.2 "Courier New", monospace;
   text-decoration: none;
