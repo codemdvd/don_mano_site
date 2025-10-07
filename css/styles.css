@@ -514,7 +514,7 @@ main.home h1 {
     z-index: 3; /* above heading */
     pointer-events: none;
   }
-  .full-logo { left: 50%; transform: translateX(-50%); top: 6vh; }
+  .full-logo { left: 50%; transform: translateX(-50%); top: clamp(16px, 6vw, 64px); }
   main.home h1 { padding: 1rem 1.25rem; }
 
   /* Back button placement (mobile) */
@@ -857,6 +857,8 @@ main.home h1 {
   padding: 0.75rem 2rem;
   transition: background-color .3s ease, color .3s ease;
   z-index: 10000;
+  /* Keep hero height stable when iOS bars hide */
+  .home { min-height: 100svh; }
 }
 }
 
@@ -874,6 +876,7 @@ main.home h1 {
     right: -3vw; left: auto; bottom: clamp(40px, 14vw, 80px); 
     transform: none;
   }
+  .home { min-height: 100svh; }
 }
 
 @media (max-width: 900px){
