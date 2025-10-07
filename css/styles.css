@@ -8,12 +8,27 @@ html, body {
   overflow-x: hidden;
 }
 
+/* Make images scale within containers by default */
+img { max-width: 100%; height: auto; }
+
 .site-header {
   background: #000;
   padding: 1rem 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+/* Mobile nav toggle (hidden on desktop) */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 2px solid #d7b78d;
+  color: #d7b78d;
+  padding: 0.35rem 0.6rem;
+  font-family: 'Courier New', monospace;
+  font-size: 1rem;
+  font-weight: 700;
 }
 .site-nav ul {
   list-style: none;
@@ -564,7 +579,8 @@ main.home h1 {
 
 .bottle-image {
   width: auto;
-  height: clamp(1100px, 60vh, 720px);
+  /* Fix incorrect clamp so it scales on mobile */
+  height: clamp(280px, 60vh, 720px);
   flex-shrink: 0;
 }
 
@@ -750,6 +766,39 @@ main.home h1 {
   .logo-wrapper{ margin-top: clamp(1rem, 3vmin, 2rem); }
 }
 
+/* General mobile improvements */
+@media (max-width: 900px) {
+  /* Convert nav to collapsible list */
+  .site-header { position: relative; }
+  .nav-toggle { display: inline-block; }
+  .site-nav { position: absolute; left: 0; right: 0; top: 100%; background: #000; display: none; padding: 0.75rem 1.25rem; }
+  .site-nav.open { display: block; }
+  .site-nav ul { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+
+  /* Footer text should not be constrained to fixed width */
+  .info-container p { width: auto; margin: 0; }
+
+  /* Home page hero adjustments */
+  .solera-image { display: none; }
+  .full-logo { left: 50%; transform: translateX(-50%); top: 6vh; }
+  main.home h1 { padding: 1rem 1.25rem; }
+
+  /* Back button placement */
+  .back-button { position: static; margin: 0 0 1rem 1rem; }
+
+  /* Right logo on detail pages should not overlap */
+  .logo-page2 { position: static; margin: 1rem 0 0; }
+}
+
+@media (max-width: 600px) {
+  /* Modal responsiveness */
+  .modal-logo { width: 80vw; height: auto; }
+  .modal-tagline { font-size: 22px; }
+  .modal-question { font-size: 28px; }
+  .modal-buttons { flex-direction: column; gap: 1rem; }
+  .modal-btn { width: 100%; max-width: 320px; }
+}
+
 @media (max-width: 900px){
   .about-container{
     grid-template-columns: 1fr;
@@ -760,4 +809,3 @@ main.home h1 {
   .steps{ grid-template-columns: 1fr; justify-items:center; }
   .steps-text{ max-width: 100%; text-align:left; }
 }
-
