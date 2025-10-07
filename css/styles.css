@@ -771,8 +771,8 @@ main.home h1 {
   /* Convert nav to collapsible list */
   .site-header { position: relative; }
   .nav-toggle { display: inline-block; }
-  .site-nav { position: absolute; left: 0; right: 0; top: 100%; background: #000; display: none; padding: 0.75rem 1.25rem; }
-  .site-nav.open { display: block; }
+  .site-nav { position: absolute; left: 0; right: 0; top: 100%; background: #000; display: none; padding: 0.75rem 1.25rem; z-index: 1000; }
+  .site-nav.open { display: block !important; }
   .site-nav ul { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
 
   /* Footer text should not be constrained to fixed width */
