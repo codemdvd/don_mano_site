@@ -5,6 +5,16 @@
     const navToggle = document.querySelector(".nav-toggle");
     const siteNav = document.querySelector(".site-nav");
     if (navToggle && siteNav) {
+      // Ensure correct initial visibility based on viewport
+      const isMobile = window.matchMedia("(max-width: 900px)").matches;
+      siteNav.classList.remove("open");
+      navToggle.setAttribute("aria-expanded", "false");
+      if (isMobile) {
+        siteNav.style.display = "none";
+      } else {
+        siteNav.style.display = ""; // allow desktop default styles
+      }
+
       navToggle.addEventListener("click", () => {
         const isOpen = siteNav.classList.toggle("open");
         navToggle.setAttribute("aria-expanded", String(isOpen));
