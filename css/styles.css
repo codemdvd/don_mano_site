@@ -821,24 +821,28 @@ main.home h1 {
     display: block !important;
     height: clamp(220px, 42vh, 420px);
     width: auto;
-    right: -17%;
+    right: 1vw; /* nudge further left */
+    left: auto;
     top: auto;
-    bottom: clamp(72px, 12vh, 128px); /* sit above the H1 bar */
+    bottom: clamp(40px, 10vw, 80px); /* even slightly lower */
     padding: 0;
     z-index: 3; /* above H1 */
-    transform: translateX(-50%);
+    transform: none;
     pointer-events: none;
   }
   .full-logo { left: 50%; transform: translateX(-50%); top: 6vh; }
   main.home h1 { 
-    padding: 0.75rem 1rem; 
-    font-size: clamp(0.8rem, 2.8vw, 1.1rem); /* smaller to fit */
-    padding-right: 1rem; /* no need to reserve space for bottle */
+    padding: 0.6rem 0.9rem; 
+    font-size: clamp(0.7rem, 2.2vw, 1rem); /* smaller to fit on one line */
+    padding-right: clamp(120px, 36vw, 260px); /* reserve space for bottle on the right */
   }
   .h1-inner { 
-    padding-left: 0.75rem; 
+    padding-left: 0.6rem; 
     white-space: nowrap; /* keep one line on mobile */
   }
+  /* Avoid vmin on mobile to prevent reflow when address bar hides */
+  .golova-image { width: clamp(80px, 28vw, 220px); transform: translate(-2vw, -2vw); }
+  .dm_logo { width: clamp(180px, 60vw, 480px); transform: translateY(10vw); }
 
   /* Back button placement */
   .back-button {
@@ -864,11 +868,11 @@ main.home h1 {
   .modal-question { font-size: 28px; }
   .modal-buttons { flex-direction: column; gap: 1rem; }
   .modal-btn { width: 100%; max-width: 320px; }
-  /* Smaller bottle on phones and above the caption */
+  /* Smaller bottle on phones and to the right */
   .solera-image { 
-    height: clamp(200px, 38vh, 360px); 
-    right: -17%; bottom: clamp(80px, 17vh, 135px); 
-    transform: translateX(-50%);
+    height: clamp(180px, 34vh, 320px); 
+    right: -3vw; left: auto; bottom: clamp(40px, 14vw, 80px); 
+    transform: none;
   }
 }
 
