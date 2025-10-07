@@ -10,6 +10,28 @@ html, body {
   overflow-x: hidden;
 }
 
+/* Global page background moved to body to avoid tiling seams */
+body {
+  background-color: #000;
+}
+
+/* Restore original background behavior on desktop (as it was) */
+@media (min-width: 901px) {
+  body { background-image: none; }
+  /* Restore original home hero positions on desktop */
+  .home-background{
+    position: absolute;
+    inset: 0 0 -1% 0;
+    width: 100%;
+    height: calc(100% + 1px);
+    object-fit: cover;
+    object-position: center 110%;
+    display: block;
+    z-index: 1;
+  }
+  main.home::after { bottom: -1%; height: calc(30% + 1%); }
+}
+
 /* Make images scale within containers by default */
 img { max-width: 100%; height: auto; }
 
@@ -123,12 +145,12 @@ button:focus {
 
 main {
   position: relative;
-  background-image: url("../assets/background-test.png");
-  background-position: top left;
-  background-repeat: repeat-y;
-  background-size: 100%;
   padding-top: 1rem;
   min-height: calc(100vh - 4rem);
+  background-image: url("../assets/background.png");
+  background-position: top left;
+  background-repeat: repeat-y;
+  background-size: 100% auto;
 }
 
 
@@ -149,6 +171,15 @@ main {
   object-position: center 80%;
   display: block;
   z-index: 1;
+}
+
+/* Restore original desktop placement for home hero image */
+@media (min-width: 901px) {
+  .home-background {
+    inset: 0 0 -1% 0;
+    height: calc(100% + 1px);
+    object-position: center 110%;
+  }
 }
 
 main.home::after {
@@ -819,12 +850,12 @@ main.home h1 {
   /* Home page hero adjustments */
   .solera-image { 
     display: block !important;
-    height: clamp(220px, 42vh, 420px);
+    height: clamp(220px, 45vw, 420px);
     width: auto;
-    right: 1vw; /* nudge further left */
+    right: 8px; /* fixed px for consistent placement */
     left: auto;
     top: auto;
-    bottom: clamp(40px, 10vw, 80px); /* even slightly lower */
+    bottom: 56px; /* fixed px for consistent placement */
     padding: 0;
     z-index: 3; /* above H1 */
     transform: none;
@@ -872,8 +903,8 @@ main.home h1 {
   .modal-btn { width: 100%; max-width: 320px; }
   /* Smaller bottle on phones and to the right */
   .solera-image { 
-    height: clamp(180px, 34vh, 320px); 
-    right: -3vw; left: auto; bottom: clamp(40px, 14vw, 80px); 
+    height: clamp(180px, 48vw, 320px); 
+    right: 12px; left: auto; bottom: 48px; 
     transform: none;
   }
   .home { min-height: 100svh; }
