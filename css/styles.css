@@ -850,12 +850,12 @@ main.home h1 {
   /* Home page hero adjustments */
   .solera-image { 
     display: block !important;
-    height: clamp(220px, 45vw, 420px);
+    height: clamp(270px, 57vw, 450px);
     width: auto;
-    right: 8px; /* fixed px for consistent placement */
+    right: -3%; /* fixed px for consistent placement */
     left: auto;
     top: auto;
-    bottom: 56px; /* fixed px for consistent placement */
+    bottom: 6.3%; /* fixed px for consistent placement */
     padding: 0;
     z-index: 3; /* above H1 */
     transform: none;
@@ -903,8 +903,8 @@ main.home h1 {
   .modal-btn { width: 100%; max-width: 320px; }
   /* Smaller bottle on phones and to the right */
   .solera-image { 
-    height: clamp(180px, 48vw, 320px); 
-    right: 12px; left: auto; bottom: 48px; 
+    height: clamp(270px, 70vw, 420px); 
+    right: -3%; left: auto; bottom:6.3%; 
     transform: none;
   }
   .home { min-height: 100svh; }
