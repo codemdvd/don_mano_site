@@ -3,6 +3,8 @@
   padding: 0;
   box-sizing: border-box;
 }
+/* Prevent iOS Safari from auto-scaling text differently on devices */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 html, body {
   max-width: 100%;
   overflow-x: hidden;
@@ -879,6 +881,15 @@ main.home h1 {
   .about-container > p{ text-align:left; }
   .steps{ grid-template-columns: 1fr; justify-items:center; }
   .steps-text{ max-width: 100%; text-align:left; }
+  /* Align the follow-up text block with the centered column on mobile */
+  .preparation-container{ 
+    padding: 0 8vw clamp(2rem, 4vmin, 3rem);
+    max-width: min(1600px, 95vw);
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .preparation-container p{ max-width: 60ch; width: min(60ch, 100%); margin-left:auto; margin-right:auto; }
 }
 
 /* Hide GO BACK button on mobile */
