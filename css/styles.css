@@ -81,7 +81,7 @@ img { max-width: 100%; height: auto; }
 
 .bottle-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, max-content));
+  grid-template-columns: repeat(auto-fit, minmax(240px, max-content));
   gap: 4rem;
   justify-content: center;
 }
@@ -105,7 +105,7 @@ img { max-width: 100%; height: auto; }
 
 .img-wrapper {
   width: 100%;
-  height: clamp(220px, 30vh, 280px);
+  height: clamp(260px, 36vh, 340px);
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -122,7 +122,7 @@ img { max-width: 100%; height: auto; }
   margin-top: 0.8rem;
   text-align: center;
   font-family: 'Courier New', monospace;
-  font-size: clamp(1rem, 1.5vmin + 0.4rem, 1.25rem);
+  font-size: clamp(1.1rem, 1.7vmin + 0.5rem, 1.4rem);
   line-height: 1.4;
 }
 
@@ -224,6 +224,16 @@ main.home h1 {
   padding-left: clamp(2rem, 5vw, 6rem);
 }
 
+.footer-content {
+  display: inline-flex;
+  padding: 0 14vw;
+  flex-direction: row;
+  align-items: flex-start;
+  /* max-width: 1100px; */
+  margin: 0 auto;
+  width: 100%;
+}
+
 .tagline {
   position: absolute;
   bottom: 10%;
@@ -260,12 +270,14 @@ main.home h1 {
 
 
 .info-container {
-  max-width: min(1200px, 92vw);
+  max-width: min(1100px, 92vw);
   margin-inline: auto;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: clamp(1rem, 3vmin, 2rem) clamp(1.25rem, 4vmin, 3rem);
-  align-items: start;
+  display: flex;
+  flex-direction: row;
+  gap: clamp(1.5rem, 4vmin, 3rem);
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .about-container{
@@ -322,18 +334,30 @@ main.home h1 {
   line-height: 1.75;
 }
 
-.social-column { justify-self: center; }
-
+.social-column {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .text-columns {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: clamp(1rem, 2.5vmin, 2rem);
+  width: 100%;
 }
 
 .text-columns p {
+  flex: 1 1 0;
   margin: 0;
   font-size: clamp(0.95rem, 1vmin + 0.5rem, 1.15rem);
   line-height: 1.6;
+  text-align: center;
+}
+
+.text-columns p:nth-child(2) {
+  flex: 0 1 clamp(260px, 40vw, 420px);
+  align-self: center;
 }
 
 .text-columns p strong {
@@ -343,8 +367,7 @@ main.home h1 {
 
 .info-container p {
   color: #d7b78d;
-  width: 180px;
-  margin: 0 12px;
+  margin: 0;
   font-size: 9pt;
   line-height: 1.5;
   font-family: 'Courier New';
@@ -352,10 +375,6 @@ main.home h1 {
 
 .info-container p strong {
   font-weight: bold;
-}
-
-.info-container p + p {
-  margin-left: 24px;
 }
 
 .info-container img {
@@ -366,15 +385,31 @@ main.home h1 {
 
 .social-icons {
   display: flex;
-  gap: clamp(0.5rem, 1.2vmin, 1rem);
+  flex-direction: column;
+  gap: clamp(0.1rem, 0.6vmin, 0.3rem);
   justify-content: center;
+  align-items: center;
   width: auto;
-  margin-bottom: clamp(0.5rem, 1.5vmin, 0.8rem);
 }
 
 .social-icons img {
   width: clamp(20px, 2.4vmin, 28px);
   height: auto;
+}
+
+/* Inline icon + text (no wrap) */
+.contact-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  white-space: nowrap;
+}
+
+.contact-details {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
 }
 
 .contactus {
@@ -475,7 +510,7 @@ main.home h1 {
 
 .logo-pair{
   position: relative;
-  width: min(40vw, 560px);
+  width: min(31.5vw, 441px);
   aspect-ratio: 4/3;
 }
 
@@ -845,7 +880,9 @@ main.home h1 {
   .site-nav ul { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
 
   /* Footer text should not be constrained to fixed width */
-  .info-container p { width: auto; margin: 0; }
+  .info-container p { 
+    width: auto; 
+    margin: 0; }
 
   /* Home page hero adjustments */
   .solera-image { 
@@ -939,14 +976,26 @@ main.home h1 {
 /* Footer: responsive layout improvements */
 @media (max-width: 900px) {
   .info-container {
-    grid-template-columns: 1fr;
-    justify-items: stretch;
-    row-gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(1.25rem, 4vmin, 2.25rem);
   }
-  .social-column { justify-self: center; }
+  .social-column {
+    justify-content: center;
+    width: 100%;
+  }
   .social-icons { display: flex; gap: 1rem; justify-content: center; }
-  .text-columns { grid-template-columns: 1fr; gap: 0.75rem; }
-  .info-container p, .text-columns p { width: auto; margin: 0; line-height: 1.6; }
-  .info-container p + p { margin-left: 0; }
-  .text-columns p + p { margin-top: 0.75rem; }
+  .text-columns {
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(1rem, 3vmin, 1.5rem);
+  }
+  .text-columns p {
+    flex: none;
+    max-width: 34ch;
+  }
+  .text-columns p:first-child {
+    display: none;
+  }
+  .info-container p { line-height: 1.6; }
 }
